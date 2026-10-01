@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap");
+
+:root {
+  --fundo: #e8ecf8;
+  --tinta: #151934;
+  --papel: #ffffff;
+  --cobalto: #3347f5;
+  --sol: #ffd23f;
+  --suave: #5a6088;
+  --borda: 3px solid var(--tinta);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--tinta);
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--cobalto); outline-offset: 2px; }
+
+/* topo */
+.topo {
+  display: flex; flex-wrap: wrap; gap: 1rem;
+  align-items: center; justify-content: space-between;
+  padding: 1rem clamp(1rem, 4vw, 3rem);
+  background: var(--papel); border-bottom: var(--borda);
+}
+.marca { font-weight: 800; font-size: 1.5rem; text-decoration: none; }
+.topo nav { display: flex; gap: 1.25rem; align-items: center; }
+.topo nav a { font-weight: 600; text-decoration: none; }
+.topo nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* grade de quadros, como página de mangá */
+.grade {
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem;
+  max-width: 1100px; margin: 0 auto; padding: 2rem clamp(1rem, 4vw, 3rem) 4rem;
+}
+.quadro {
+  background: var(--papel); border: var(--borda);
+  box-shadow: 6px 6px 0 var(--tinta); padding: 1.25rem 1.5rem;
+}
+.quadro.mangas { grid-column: span 7; }
+.quadro.jogos { grid-column: span 5; }
+.quadro.amigos { grid-column: span 12; }
+
+h1, h2 { margin: 0 0 1rem; line-height: 1.15; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; }
+h2 { font-size: 1.5rem; font-weight: 800; }
+
+.vazio { color: var(--suave); margin: 0 0 1rem; }
+
+/* listas */
+.lista { list-style: none; margin: 0 0 1.25rem; padding: 0; }
+.lista li {
+  display: flex; flex-wrap: wrap; gap: 0.25rem 1rem;
+  align-items: center; justify-content: space-between;
+  padding: 0.75rem 0; border-bottom: 2px dashed #c4c9e0;
+}
+.lista li:last-child { border-bottom: 0; }
+.titulo { font-weight: 600; }
+.detalhe { color: var(--suave); font-size: 0.95rem; }
+.lista progress { width: 100%; height: 0.6rem; accent-color: var(--cobalto); }
+
+.nota {
+  background: var(--sol); border: 2px solid var(--tinta);
+  font-weight: 800; padding: 0 0.6rem; min-width: 3.2rem; text-align: center;
+}
+
+/* formulários */
+form { display: grid; gap: 0.75rem; }
+label { display: grid; gap: 0.25rem; font-weight: 600; }
+input, select {
+  font: inherit; color: inherit; padding: 0.55rem 0.7rem;
+  background: var(--papel); border: 2px solid var(--tinta); border-radius: 0;
+}
+.linha { display: grid; grid-template-columns: 1fr 8rem; gap: 0.75rem; }
+
+.botao {
+  font: inherit; font-weight: 800; cursor: pointer; padding: 0.65rem 1rem;
+  background: var(--cobalto); color: #fff;
+  border: 2px solid var(--tinta); box-shadow: 3px 3px 0 var(--tinta);
+}
+.botao:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--tinta); }
+.botao:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--tinta); }
+.botao.sair { background: var(--papel); color: var(--tinta); padding: 0.35rem 0.8rem; }
+
+/* login */
+.centro { min-height: 100vh; display: grid; place-items: center; padding: 1.5rem; }
+.login { width: min(100%, 26rem); display: grid; gap: 2rem; }
+.login .quadro { box-shadow: 8px 8px 0 var(--cobalto); }
+
+@media (max-width: 800px) {
+  .quadro.mangas, .quadro.jogos, .quadro.amigos { grid-column: 1 / -1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .botao { transition: none; }
+  .botao:hover, .botao:active { transform: none; }
+}

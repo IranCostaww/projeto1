@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roda de amigos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="index.html">Caroço de Jaca</a>
+    <nav>
+      <a href="#mangas">Mangás</a>
+      <a href="#jogos">Jogos</a>
+      <a href="#amigos">Amigos</a>
+      <a class="botao sair" href="login.html">Sair</a>
+    </nav>
+  </header>
+
+  <main class="grade">
+    <h1 style="grid-column: 1 / -1; margin: 0;">Seu painel</h1>
+
+    <!-- MANGÁS -->
+    <section class="quadro mangas" id="mangas">
+      <h2>Mangás Acompanhados</h2>
+
+      <!-- BACKEND: gerar um <li> por mangá do usuário -->
+      <ul class="lista">
+        <li>
+          <span class="titulo">Nome do mangá 1</span>
+          <span class="detalhe">Capítulo 42 de 120</span>
+          <progress max="120" value="42"></progress>
+        </li>
+        <li>
+          <span class="titulo">Nome do mangá 2</span>
+          <span class="detalhe">Capítulo 8 de 30</span>
+          <progress max="30" value="8"></progress>
+        </li>
+      </ul>
+      <!-- Estado vazio (mostrar quando a lista não tiver itens):
+      <p class="vazio">Você ainda não acompanha nenhum mangá. Adicione o primeiro abaixo.</p> -->
+
+      <form action="/mangas" method="post">
+        <label>Título
+          <input type="text" name="titulo" required>
+        </label>
+        <div class="linha">
+          <label>Status
+            <select name="status">
+              <option value="lendo">Lendo</option>
+              <option value="quero_ler">Quero ler</option>
+              <option value="concluido">Concluído</option>
+            </select>
+          </label>
+          <label>Capítulo
+            <input type="number" name="capitulo" min="0" value="0">
+          </label>
+        </div>
+        <button class="botao" type="submit">Adicionar mangá</button>
+      </form>
+    </section>
+
+    <!-- JOGOS -->
+    <section class="quadro jogos" id="jogos">
+      <h2>Suas avaliações de jogos</h2>
+
+      <!-- BACKEND: gerar um <li> por avaliação -->
+      <ul class="lista">
+        <li>
+          <span class="titulo">Nome do jogo 1</span>
+          <span class="nota">9/10</span>
+        </li>
+        <li>
+          <span class="titulo">Nome do jogo 2</span>
+          <span class="nota">7/10</span>
+        </li>
+      </ul>
+      <!-- Estado vazio:
+      <p class="vazio">Nenhuma avaliação ainda. Avalie um jogo abaixo.</p> -->
+
+      <form action="/jogos" method="post">
+        <div class="linha">
+          <label>Jogo
+            <input type="text" name="jogo" required>
+          </label>
+          <label>Nota
+            <input type="number" name="nota" min="0" max="10" step="0.5" required>
+          </label>
+        </div>
+        <button class="botao" type="submit">Salvar avaliação</button>
+      </form>
+    </section>
+
+    <!-- AMIGOS -->
+    <section class="quadro amigos" id="amigos">
+      <h2>Amigos</h2>
+
+      <!-- BACKEND: gerar um <li> por amigo, com o que ele está lendo e jogando -->
+      <ul class="lista">
+        <li>
+          <span class="titulo">amigo1</span>
+          <span class="detalhe">Lendo: Nome do mangá 3 · Última nota: Nome do jogo 3 (8/10)</span>
+        </li>
+        <li>
+          <span class="titulo">amigo2</span>
+          <span class="detalhe">Lendo: Nome do mangá 1 · Última nota: Nome do jogo 2 (6/10)</span>
+        </li>
+      </ul>
+      <!-- Estado vazio:
+      <p class="vazio">Você ainda não tem amigos aqui. Procure alguém pelo nome de usuário.</p> -->
+
+      <form action="/amizades" method="post">
+        <div class="linha">
+          <label>Nome de usuário
+            <input type="text" name="usuario" required>
+          </label>
+          <button class="botao" type="submit" style="align-self: end;">Adicionar amigo</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar · Caroço de Jaca</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="centro">
+    <div class="login">
+      <h1>Caroço de Jaca</h1>
+
+      <!-- LOGIN: o backend confere usuário e senha -->
+      <section class="quadro">
+        <h2>Entrar</h2>
+        <form action="/login" method="post">
+          <label>Nome de usuário
+            <input type="text" name="usuario" autocomplete="username" required>
+          </label>
+          <label>Senha
+            <input type="password" name="senha" autocomplete="current-password" required>
+          </label>
+          <!-- Mensagem de erro (o backend mostra quando a senha estiver errada):
+          <p class="vazio">Usuário ou senha incorretos. Tente de novo.</p> -->
+          <button class="botao" type="submit">Entrar</button>
+        </form>
+      </section>
+
+      <!-- CADASTRO: o backend cria o usuário e guarda a senha com hash -->
+      <section class="quadro">
+        <h2>Criar conta</h2>
+        <form action="/cadastro" method="post">
+          <label>Nome de usuário
+            <input type="text" name="usuario" autocomplete="username" required>
+          </label>
+          <label>Senha
+            <input type="password" name="senha" autocomplete="new-password" minlength="8" required>
+          </label>
+          <button class="botao" type="submit">Criar conta</button>
+        </form>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
