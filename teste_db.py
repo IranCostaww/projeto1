@@ -11,6 +11,7 @@ conexao = psycopg.connect(
     password=senha,
 )
 
+#tabelas dos usuarios
 cursor = conexao.cursor()
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS usuarios (
@@ -19,6 +20,18 @@ cursor.execute("""
         senha_hash VARCHAR(255) NOT NULL
     );
 """)
+
+#Tabela dos mangas sql
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS mangas (
+        id SERIAL PRIMARY KEY,
+        titulo_manga VARCHAR(50) UNIQUE NOT NULL,
+        capitulos INTEGER NOT NULL DEFAULT 0,
+        manga_autor VARCHAR(50) NOT NULL,
+        capitulo_lidos INTEGER NOT NULL DEFAULT 0
+    );
+""")
+
 conexao.commit()
 
 cursor.close()
