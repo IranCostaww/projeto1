@@ -1,5 +1,6 @@
 import psycopg
 from getpass import getpass
+from pwdlib import PasswordHash
 
 senha = getpass("Senha do banco: ")
 
@@ -36,3 +37,16 @@ conexao.commit()
 
 cursor.close()
 conexao.close()
+
+#testando o hash da bilbioteca pwdlib.
+
+password_hash = PasswordHash.recommended()
+
+# aplicando hash ao passward
+
+hashed = password_hash.hash("senha1207")
+
+# verificando a senha:
+
+is_valid = password_hash.verify("senha1208", hashed)  #verdade
+is_valid = password_hash.verify("nao_e", hashed) # falso
